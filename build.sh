@@ -37,43 +37,12 @@ dnf install -y tailscale #&& rm -rf /etc/yum.repos.d/tailscale.repo
 dnf install -y just
 
 
-
-# Cockpit
-dnf install -y cockpit cockpit-podman
-# piper
-dnf install -y piper
-
-# FTP
-dnf install -y vsftpd
-systemctl enable vsftpd
-cat /etc/vsftpd/vsftpd.conf
-
-
 ### SystemD
 # tailscale
 systemctl enable tailscaled.service
 systemctl enable sshd.service
 # bootc
 systemctl enable bootc-update.timer
-# flatpak
-systemctl enable flatpak-setup.service
-systemctl enable flatpak-update.service
-systemctl enable flatpak-update.timer
-systemctl enable flatpak-packages.service
-# brew
-#systemctl enable brew-setup.service
-#systemctl enable brew-update.service
-#systemctl enable brew-packages.service
-# mask
-systemctl mask flatpak-add-fedora-repos.service
-systemctl mask fedora-third-party-refresh.service
-# failing systemd-remount-fs.service
-systemctl mask systemd-remount-fs.service
-# cockpit
-systemctl enable cockpit.socket
 
 # repo cleanup
 rm -rf /etc/yum.repos.d/_*.repo
-
-# tuned profiles
-# https://www.redhat.com/en/blog/linux-tuned-tuning-profiles
