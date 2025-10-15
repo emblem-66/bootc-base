@@ -3,6 +3,9 @@ COPY --chmod=755 build.sh /
 
 # Base Image
 FROM quay.io/fedora/fedora-bootc:latest
+FROM quay.io/fedora-ostree-desktops/base-atomic:43
+FROM ghcr.io/ublue-os/base-main:43
+
 
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
